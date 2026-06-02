@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Raylib",
+            "type": "shell",
+            "command": "C:\\raylib\\w64devkit\\bin\\g++.exe",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileBasenameNoExtension}",
+                "-IC:\\raylib\\raylib\\src",
+                "-LC:\\raylib\\raylib\\src",
+                "-lraylib",
+                "-lopengl32",
+                "-lgdi32",
+                "-lwinmm"
+            ]
+        },
+        {
+            "label": "Run Raylib",
+            "type": "shell",
+            "command": ".\\${fileBasenameNoExtension}.exe",
+            "dependsOn": "Build Raylib",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
