@@ -2,7 +2,7 @@
 #include<ctime>
 int Win_x = 800;
 int Win_y = 600;
-int snake_x_y = 20;
+int snake_x_y = 30;
 int speed = 1;
 class Food{
     public: 
@@ -66,14 +66,16 @@ class Snake{
 int main(){
     
     InitWindow(Win_x,Win_y,"Snake game");
-    SetTargetFPS(15);
+    SetTargetFPS(10);
     Food food;
     Snake snake;
 
     while(!WindowShouldClose()){
         BeginDrawing();
         ClearBackground(BLACK);
-
+        if(food.Food_x == snake.snake_x && food.Food_y == snake.snake_y){
+            food.respawn();
+        }
         food.DrawFood();
         snake.DrawSnake();
         snake.MovePlayer();
